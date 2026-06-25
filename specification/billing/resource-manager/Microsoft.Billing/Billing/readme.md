@@ -26,12 +26,205 @@ These are the global settings for the Billing API.
 
 ```yaml
 openapi-type: arm
-tag: package-2024-04
+tag: package-2026-01
+```
+
+### Tag: package-2026-01
+
+These settings apply only when `--tag=package-2026-01` is specified on the command line.
+
+```yaml $(tag) == 'package-2026-01'
+title: BillingManagementClient
+description: Billing Client
+input-file:
+- stable/2026-01-01/openapi.json
+suppressions:
+- code: AllProxyResourcesShouldHaveDelete
+  from: billingRequest.json
+  reason: Service design forces behavior
+- code: AllProxyResourcesShouldHaveDelete
+  from: billingSubscription.json
+  reason: Service design forces behavior
+- code: AllProxyResourcesShouldHaveDelete
+  from: policy.json
+  reason: Service design forces behavior
+- code: AllProxyResourcesShouldHaveDelete
+  from: transfers.json
+  reason: Service design forces behavior
+- code: AllTrackedResourcesMustHaveDelete
+  from: reservation.json
+  reason: Breaking change
+- code: AvoidAdditionalProperties
+  from: billingRequest.json
+  reason: Service design forces behavior
+- code: AvoidAdditionalProperties
+  from: billingSavingsPlan.json
+  reason: False positive. Used for "tags"
+- code: AvoidAdditionalProperties
+  from: billingSubscription.json
+  reason: Breaking change
+- code: AvoidAdditionalProperties
+  from: reservation.json
+  reason: False positive. Used for "tags"
+- code: AvoidAnonymousTypes
+  from: policy.json
+  reason: Service design forces behavior
+- code: EnumInsteadOfBoolean
+  from: associatedTenant.json
+  reason: Breaking Change
+- code: EnumInsteadOfBoolean
+  from: billingAccount.json
+  reason: Breaking Change
+- code: EnumInsteadOfBoolean
+  from: billingProfile.json
+  reason: Breaking Change
+- code: EnumInsteadOfBoolean
+  from: billingProperty.json
+  reason: Breaking Change
+- code: EnumInsteadOfBoolean
+  from: billingRoleAssignment.json
+  reason: Breaking Change
+- code: EnumInsteadOfBoolean
+  from: billingSavingsPlan.json
+  reason: Breaking Change
+- code: EnumInsteadOfBoolean
+  from: billingSubscription.json
+  reason: Breaking Change
+- code: EnumInsteadOfBoolean
+  from: enrollmentAccount.json
+  reason: Breaking Change
+- code: EnumInsteadOfBoolean
+  from: invoice.json
+  reason: Breaking Change
+- code: EnumInsteadOfBoolean
+  from: invoiceSection.json
+  reason: Breaking Change
+- code: EnumInsteadOfBoolean
+  from: operation.json
+  reason: Breaking Change
+- code: EnumInsteadOfBoolean
+  from: product.json
+  reason: Breaking Change
+- code: EnumInsteadOfBoolean
+  from: reservation.json
+  reason: Breaking Change
+- code: EnumInsteadOfBoolean
+  from: transaction.json
+  reason: Breaking Change
+- code: EnumInsteadOfBoolean
+  from: types.json
+  reason: Breaking Change
+- code: EvenSegmentedPathForPutOperation
+  from: policy.json
+  reason: False positive
+- code: GetCollectionOnlyHasValueAndNextLink
+  from: billingSavingsPlan.json
+  reason: Blocked on resolving this issue by wide adoption of partner services
+- code: GetCollectionOnlyHasValueAndNextLink
+  from: billingSubscription.json
+  reason: Breaking change
+- code: GetCollectionOnlyHasValueAndNextLink
+  from: reservation.json
+  reason: Breaking change
+- code: GetCollectionOnlyHasValueAndNextLink
+  from: transaction.json
+  reason: Breaking change
+- code: ListInOperationName
+  from: billingRoleAssignment.json
+  reason: Breaking Change
+- code: ListInOperationName
+  from: transfers.json
+  reason: Breaking Change
+- code: LroErrorContent
+  reason: Service design that generates API definition. Type defined in local types.json
+- code: OperationIdNounConflictingModelNames
+  from: billingProperty.json
+  reason: Breaking Change
+- code: OperationIdNounConflictingModelNames
+  from: billingRoleDefinition.json
+  reason: Breaking Change
+- code: OperationIdNounVerb
+  from: billingSavingsPlan.json
+  reason: False positive. SavingsPlan is a child resource of SavingsPlanOrder
+- code: OperationIdNounVerb
+  from: reservation.json
+  reason: False positive. Reservations can be a child resource of ReservationOrder.
+- code: OperationIdNounVerb
+  from: transaction.json
+  reason: False positive. TransactionSummary is an aggregation of transactions.
+- code: OperationsApiSchemaUsesCommonTypes
+  from: operation.json
+  reason: Service design that generates API definition. Type defined in local types.json
+- code: ParametersInPointGet
+  reason: Service design forces this behavior
+- code: ParametersInPost
+  from: billingAccount.json
+  reason: Breaking change
+- code: ParametersInPost
+  from: billingRoleAssignment.json
+  reason: Service design forces this behavior
+- code: ParametersInPost
+  from: invoice.json
+  reason: Breaking Change
+- code: ParameterNotDefinedInGlobalParameters
+  reason: Referenced in common types.json file
+- code: ParameterNotUsingCommonTypes
+  reason: Service design forces this behavior
+- code: PathForTrackedResourceTypes
+  from: reservation.json
+  reason: Breaking change
+- code: PostOperationIdContainsUrlVerb
+  from: billingAccount.json
+  reason: Breaking Change
+- code: PostOperationIdContainsUrlVerb
+  from: billingRoleAssignment.json
+  reason: Breaking Change
+- code: PutInOperationName
+  from: transfers.json
+  reason: Breaking Change
+- code: PutRequestResponseSchemeArm
+  from: transfers.json
+  reason: Design ensures only recipients choose products, not initiators, for security and access reasons. 
+- code: PutResponseCodes
+  from: billingProfile.json
+  reason: Breaking change
+- code: PutResponseCodes
+  from: billingSubscription.json
+  reason: Breaking change
+- code: PutResponseCodes
+  from: invoiceSection.json
+  reason: Breaking change
+- code: ResourceNameRestriction
+  from: billingSubscription.json
+  reason: Breaking change
+- code: ResourceNameRestriction
+  from: payment.json
+  reason: Breaking change
+- code: TenantLevelAPIsNotAllowed
+  reason: Specific validation rules do not apply to this service. Microsoft.Billing is a tenant level RP
+- code: TopLevelResourcesListBySubscription
+  reason: Specific validation rules do not apply to this service. Microsoft.Billing is a tenant level RP
+- code: TrackedResourcesMustHavePut
+  from: reservation.json
+  reason: Breaking change
+- code: XmsPageableForListCalls
+  from: availableBalance.json
+  reason: Breaking change
+- code: XmsPageableForListCalls
+  from: billingProperty.json
+  reason: Breaking change
+- code: XmsPageableForListCalls
+  from: policy.json
+  reason: Breaking change
+- code: XmsPageableForListCalls
+  from: transaction.json
+  reason: Breaking change
+- code: XmsResourceInPutResponse
+  from: transfers.json
+  reason: Service design forces this behavior
 ```
 
 ### Tag: package-2024-04
-
-These settings apply only when `--tag=package-2024-04` is specified on the command line.
 
 These settings apply only when `--tag=package-2024-04` is specified on the command line.
 
