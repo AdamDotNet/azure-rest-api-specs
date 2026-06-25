@@ -2,12 +2,16 @@ import "@typespec/rest";
 import "@typespec/http";
 import "@azure-tools/typespec-azure-resource-manager";
 import "@azure-tools/typespec-azure-core";
+import "@typespec/versioning";
+import "@typespec/openapi";
 
 using TypeSpec.Rest;
 using TypeSpec.Http;
 using Azure.ResourceManager;
 using Azure.Core;
 using Azure.ResourceManager.Foundations;
+using TypeSpec.Versioning;
+using TypeSpec.OpenAPI;
 
 namespace Microsoft.Billing;
 
@@ -3446,6 +3450,12 @@ model BillingAccountProperties {
    */
   @identifiers(#[])
   taxIds?: TaxIdentifier[];
+
+  /**
+   * A test property for Adam.
+   */ 
+  @added(Versions.v2026_01_01)
+  adamTest?: string;
 }
 
 /**
